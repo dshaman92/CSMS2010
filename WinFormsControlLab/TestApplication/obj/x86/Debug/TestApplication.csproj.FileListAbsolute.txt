@@ -1,0 +1,11 @@
+c:\users\ilya\documents\visual studio 2010\Projects\WinFormsControlLab\TestApplication\bin\Debug\TestApplication.exe
+c:\users\ilya\documents\visual studio 2010\Projects\WinFormsControlLab\TestApplication\bin\Debug\TestApplication.pdb
+c:\users\ilya\documents\visual studio 2010\Projects\WinFormsControlLab\TestApplication\obj\x86\Debug\ResolveAssemblyReference.cache
+c:\users\ilya\documents\visual studio 2010\Projects\WinFormsControlLab\TestApplication\obj\x86\Debug\TestApplication.Properties.Resources.resources
+c:\users\ilya\documents\visual studio 2010\Projects\WinFormsControlLab\TestApplication\obj\x86\Debug\GenerateResource.read.1.tlog
+c:\users\ilya\documents\visual studio 2010\Projects\WinFormsControlLab\TestApplication\obj\x86\Debug\GenerateResource.write.1.tlog
+c:\users\ilya\documents\visual studio 2010\Projects\WinFormsControlLab\TestApplication\obj\x86\Debug\TestApplication.exe
+c:\users\ilya\documents\visual studio 2010\Projects\WinFormsControlLab\TestApplication\obj\x86\Debug\TestApplication.pdb
+c:\users\ilya\documents\visual studio 2010\Projects\WinFormsControlLab\TestApplication\bin\Debug\LabControls.dll
+c:\users\ilya\documents\visual studio 2010\Projects\WinFormsControlLab\TestApplication\bin\Debug\LabControls.pdb
+c:\users\ilya\documents\visual studio 2010\Projects\WinFormsControlLab\TestApplication\obj\x86\Debug\TestApplication.Form1.resources

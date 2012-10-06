@@ -1,0 +1,8 @@
+c:\users\ilya\documents\visual studio 2010\Projects\WinFormsControlLab\LabControls\bin\Debug\LabControls.dll
+c:\users\ilya\documents\visual studio 2010\Projects\WinFormsControlLab\LabControls\bin\Debug\LabControls.pdb
+c:\users\ilya\documents\visual studio 2010\Projects\WinFormsControlLab\LabControls\obj\Debug\ResolveAssemblyReference.cache
+c:\users\ilya\documents\visual studio 2010\Projects\WinFormsControlLab\LabControls\obj\Debug\LabControls.dll
+c:\users\ilya\documents\visual studio 2010\Projects\WinFormsControlLab\LabControls\obj\Debug\LabControls.pdb
+c:\users\ilya\documents\visual studio 2010\Projects\WinFormsControlLab\LabControls\obj\Debug\LabControls.ColorChooser.resources
+c:\users\ilya\documents\visual studio 2010\Projects\WinFormsControlLab\LabControls\obj\Debug\GenerateResource.read.1.tlog
+c:\users\ilya\documents\visual studio 2010\Projects\WinFormsControlLab\LabControls\obj\Debug\GenerateResource.write.1.tlog
