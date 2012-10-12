@@ -12,7 +12,7 @@ namespace LabControls
     public partial class ColorChooser : UserControl
     {
         public Color CurrentColor { get; set; }
-        private bool converting;
+        private Int32 _red, _green, _blue;
 
         public ColorChooser()
         {
@@ -22,65 +22,79 @@ namespace LabControls
             nmBoxRed.TextChanged += new EventHandler(nmBox_TextChanged);
             nmBoxGreen.TextChanged += new EventHandler(nmBox_TextChanged);
             nmBoxBlue.TextChanged += new EventHandler(nmBox_TextChanged);
-            converting = false;
+            _red = _green = _blue = 0;
+        }
+
+        private Int32 GetValueFromNumberBox(NumberBox sender)
+        {
+            switch (sender.CurrentNotation)
+            {
+                case Notation.Decimal:
+                    return Convert.ToInt32((sender as NumberBox).Text, 10);
+                case Notation.Heximal:
+                    return Convert.ToInt32((sender as NumberBox).Text, 16);
+                default:
+                    throw new NotImplementedException();
+            }
+        }
+
+        private void SetValueToNumberBox(NumberBox sender, Int32 newValue)
+        {
+            switch (sender.CurrentNotation)
+            {
+                case Notation.Decimal:
+                    sender.Text = String.Format("{0}", newValue);
+                    break;
+                case Notation.Heximal:
+                    sender.Text = String.Format("{0:X}", newValue);
+                    break;
+                default:
+                    throw new NotImplementedException();
+            }
         }
 
         void nmBox_TextChanged(object sender, EventArgs e)
         {
-            if (converting) return;
+            if (!(sender is NumberBox)) return;
 
-            Int32 red, green, blue;
+            if ((sender as NumberBox).Text.Length == 0)
+                (sender as NumberBox).Text = "0";
 
-            if (nmBoxRed.Text.Length == 0)
-                nmBoxRed.Text = "0";
-            if (nmBoxGreen.Text.Length == 0)
-                nmBoxGreen.Text = "0";
-            if (nmBoxBlue.Text.Length == 0)
-                nmBoxBlue.Text = "0";
-
-            switch (nmBoxRed.CurrentNotation)
+            switch ((sender as NumberBox).Name)
             {
-                case Notation.Decimal:
-                    red = Convert.ToInt32(nmBoxRed.Text);
-                    green = Convert.ToInt32(nmBoxGreen.Text);
-                    blue = Convert.ToInt32(nmBoxBlue.Text);
+                case "nmBoxRed":
+                    _red = GetValueFromNumberBox(sender as NumberBox);
+                    if (_red > 255 || _red < 0)
+                    {
+                        _red = Math.Min(255, Math.Max(0, _red));
+                        SetValueToNumberBox(sender as NumberBox, _red);
+                    }
                     break;
-                case Notation.Heximal:
-                    red = Convert.ToInt32(nmBoxRed.Text, 16);
-                    green = Convert.ToInt32(nmBoxGreen.Text, 16);
-                    blue = Convert.ToInt32(nmBoxBlue.Text, 16);
+                case "nmBoxGreen":
+                    _green = GetValueFromNumberBox(sender as NumberBox);
+                    if (_green > 255 || _green < 0)
+                    {
+                        _green = Math.Min(255, Math.Max(0, _green));
+                        SetValueToNumberBox(sender as NumberBox, _green);
+                    }
+                    break;
+                case "nmBoxBlue":
+                    _blue = GetValueFromNumberBox(sender as NumberBox);
+                    if (_blue > 255 || _blue < 0)
+                    {
+                        _blue = Math.Min(255, Math.Max(0, _blue));
+                        SetValueToNumberBox(sender as NumberBox, _blue);
+                    }
                     break;
                 default:
                     throw new NotImplementedException();
             }
-
-            red = Math.Min(255, Math.Max(0, red));
-            green = Math.Min(255, Math.Max(0, green));
-            blue = Math.Min(255, Math.Max(0, blue));
-
-            switch (nmBoxRed.CurrentNotation)
-            {
-                case Notation.Decimal:
-                    nmBoxRed.Text = String.Format("{0}", red);
-                    nmBoxGreen.Text = String.Format("{0}", green);
-                    nmBoxBlue.Text = String.Format("{0}", blue);
-                    break;
-                case Notation.Heximal:
-                    nmBoxRed.Text = String.Format("{0:X}", red);
-                    nmBoxGreen.Text = String.Format("{0:X}", green);
-                    nmBoxBlue.Text = String.Format("{0:X}", blue);
-                    break;
-                default:
-                    throw new NotImplementedException();
-            }
-
-            CurrentColor = Color.FromArgb(red, green, blue);
+            CurrentColor = Color.FromArgb(_red, _green, _blue);
             lbOutputColor.BackColor = CurrentColor;
         }
 
         private void rBtnDec_CheckedChanged(object sender, EventArgs e)
         {
-            converting = true;
             switch (nmBoxRed.CurrentNotation)
             {
                 case Notation.Decimal:
@@ -98,7 +112,6 @@ namespace LabControls
                 default:
                     throw new NotImplementedException();
             }
-            converting = false;
         }
     }
 }
